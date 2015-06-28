@@ -10,6 +10,7 @@ assert RABBIT_URL
 app = Celery('control', broker=RABBIT_URL, backend=RABBIT_URL, include=['control.tasks'])
 app.conf.update(
     CELERY_TASK_RESULT_EXPIRES=3600,
+    BROKER_CONNECTION_TIMEOUT=10
 )
 
 
