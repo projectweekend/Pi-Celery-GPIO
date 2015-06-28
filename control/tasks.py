@@ -1,6 +1,6 @@
 import os
 from pi_pin_manager import PinManager
-from control.app import app
+from control.celery import app
 
 
 CONTROL_PIN_CONFIG = os.getenv('CONTROL_PIN_CONFIG')
