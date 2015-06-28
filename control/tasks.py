@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 import os
 from pi_pin_manager import PinManager
 from control.celery import app
