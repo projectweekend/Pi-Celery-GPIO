@@ -31,5 +31,10 @@ def pin_off(pin_num):
     pins.off(pin_num)
 
 
+@app.task
+def pin_read(pin_num):
+    return pins.read(pin_num)
+
+
 if __name__ == '__main__':
     app.start()
