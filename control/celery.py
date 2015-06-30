@@ -16,7 +16,7 @@ pins = PinManager(config_file=CONTROL_PIN_CONFIG)
 
 app = Celery('control', broker=RABBIT_URL, backend=RABBIT_URL)
 app.conf.update(
-    CELERY_TASK_RESULT_EXPIRES=3600,
+    CELERY_TASK_RESULT_EXPIRES=86400,
     BROKER_CONNECTION_TIMEOUT=10
 )
 
