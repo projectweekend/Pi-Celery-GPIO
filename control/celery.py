@@ -24,11 +24,13 @@ app.conf.update(
 @app.task
 def pin_on(pin_num):
     pins.on(pin_num)
+    return 1
 
 
 @app.task
 def pin_off(pin_num):
     pins.off(pin_num)
+    return 0
 
 
 @app.task
