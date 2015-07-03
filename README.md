@@ -10,7 +10,7 @@ Examples combining Celery (http://www.celeryproject.org/) and [Raspberry Pi GPIO
 * The `/service/control` directory contains a Celery worker that receives tasks to control the Raspberry Pi's GPIO pins.
 
 
-### Using /service/control
+### Using the GPIO Service
 
 Export the following environment variables before starting the worker:
 * `CONTROL_RABBIT_URL`: The [RabbitMQ](https://www.rabbitmq.com/) connection URL for the [Celery broker](http://celery.readthedocs.org/en/latest/getting-started/brokers/rabbitmq.html).
