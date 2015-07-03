@@ -21,3 +21,27 @@ Start the `control` Celery worker by running this command inside the `/service` 
 ```
 sudo -E celery -A control worker
 ```
+
+### Using the GPIO Client
+
+In the `/client` package there is a class to use for interacting with the Raspberry Pi that is running the `control` Celery worker. You can run this from anywhere that can connect to the same RabbitMQ instance referenced in `CONTROL_RABBIT_URL`.
+
+**Example:**
+```python
+from client.gpio import GPIOClient
+
+# Set this to the same connection URL used in CONTROL_RABBIT_URL
+CONTROL_RABBIT_URL = ''
+
+# Create an instance of the class
+client = GPIOClient(CONTROL_RABBIT_URL)
+
+# Turn pin on (result will be 1)
+result = client.on(18)
+
+# Turn pin off (result will be 0)
+result = client.off(18)
+
+# Read pin state (result will be 0 or 1)
+result = client.read(18)
+```
