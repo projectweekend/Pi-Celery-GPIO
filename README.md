@@ -1,13 +1,15 @@
 # Pi-Celery-GPIO
-Examples combining Celery (http://www.celeryproject.org/) and [Raspberry Pi GPIO](https://www.raspberrypi.org/documentation/usage/gpio/)
+An example combining Celery (http://www.celeryproject.org/) and [Raspberry Pi GPIO](https://www.raspberrypi.org/documentation/usage/gpio/)
 
 
 
-## Raspberry Pi
+## Service
 
-* This directory (`/raspberry_pi`) contains examples of Celery workers meant to run on a Raspberry Pi.
-* The `/raspberry_pi/requirements.txt` file tracks all the Python dependencies for the examples in this directory. To manually install: `sudo pip install -r requirements.txt`.
-* The `/raspberry_pi/control` directory contains a Celery worker that receives tasks to control the Raspberry Pi's GPIO pins.
+* This directory (`/service`) contains a Celery worker meant to run on a Raspberry Pi.
+* The `/service/requirements.txt` file tracks all the Python dependencies for the examples in this directory. To manually install: `sudo pip install -r requirements.txt`.
+* The `/service/control` directory contains a Celery worker that receives tasks to control the Raspberry Pi's GPIO pins.
+* Automated install with [Fabric](http://www.fabfile.org/): `fab install_celery_control`
+* Automated update with [Fabric](http://www.fabfile.org/): `fab install_celery_update`
 
 
 ### Controlling GPIO
@@ -17,7 +19,7 @@ Export the following environment variables before starting the worker:
 * `CONTROL_PIN_CONFIG`: The path to a [config file](https://github.com/projectweekend/Pi-Pin-Manager#configure-it) that defines the pins available to be controlled. **Note:** This worker only receives messages to flip or read GPIO pins so the config `mode` should always be set to `OUT`.
 * `C_FORCE_ROOT`: Set this to `True` because the Raspberry Pi GPIO access requires root access.
 
-Start the `control` Celery worker by running this command inside the `/raspberry_pi` directory:
+Start the `control` Celery worker by running this command inside the `/service` directory:
 ```
 sudo -E celery -A control worker
 ```
