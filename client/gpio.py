@@ -1,4 +1,4 @@
-from client.client import BaseClient
+from .client import BaseClient
 
 
 class GPIOClient(BaseClient):
