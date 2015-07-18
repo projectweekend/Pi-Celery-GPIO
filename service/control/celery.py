@@ -1,7 +1,7 @@
 from __future__ import absolute_import
 import os
 from celery import Celery
-from pi_pin_manager import PinManager
+from pi_pin_manager import GPIOHelper
 
 
 RABBIT_URL = os.getenv('CONTROL_RABBIT_URL')
@@ -11,7 +11,7 @@ CONTROL_PIN_CONFIG = os.getenv('CONTROL_PIN_CONFIG')
 assert CONTROL_PIN_CONFIG
 
 
-pins = PinManager(config_file=CONTROL_PIN_CONFIG)
+pins = GPIOHelper(config=CONTROL_PIN_CONFIG)
 
 
 app = Celery('control', broker=RABBIT_URL, backend=RABBIT_URL)
